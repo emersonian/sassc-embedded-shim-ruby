@@ -561,7 +561,7 @@ module SassC
       return if url.nil?
 
       path = unescape(parse(url).path)
-      path = path[1..] if Gem.win_platform? && path[0].chr == '/' && path[1].chr =~ /[a-z]/i && path[2].chr == ':'
+      path.shift if Gem.win_platform? && path[0].chr == '/' && path[1].chr =~ /[a-z]/i && path[2].chr == ':'
       path
     end
 
